@@ -5,19 +5,21 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use Illuminate\Database\Seeder;
-use Faker\Generator;
 use Illuminate\Container\Container;
+use Faker\Generator;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\ReturnedSeeder;
 use Database\Seeders\EquipmentOWnedSeeder;
 use Database\Seeders\EquipmentDetailSeeder;
+use Database\Seeders\EquipmentAttributeSeeder;
+use Database\Seeders\ApprovalSeeder;
+use App\Models\Role;
 use App\Models\Office;
 use App\Models\EquipmentOwned;
+use App\Models\EquipmentDetail;
+use App\Models\EquipmentAttribute;
 use App\Models\Equipment;
 use App\Models\AssignOffice;
-use App\Models\EquipmentAttribute;
-use App\Models\EquipmentDetail;
-use App\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -71,7 +73,7 @@ class DatabaseSeeder extends Seeder
                 'Cabanglasan' => [8.077034541, 125.2990361],
                 'Damulog' => [7.485338155, 124.9412481],
                 'Dangcagan' => [7.611604446, 125.0022349],
-                'Don_Carlos' => [7.681023813379106, 124.99512384270803],
+                'Don Carlos' => [7.681023813379106, 124.99512384270803],
                 'Impasug-Ong' => [8.30239834, 125.0008535],
                 'Kadingilan' => [7.599834052, 124.9095002],
                 'Kibawe' => [7.569320416, 124.9854067],
@@ -80,16 +82,16 @@ class DatabaseSeeder extends Seeder
                 'Libona' => [8.367511329, 124.6864745],
                 'Malaybalay' => [8.126548416, 125.1274213],
                 'Malitbog' => [8.533904915, 124.8838126],
-                'Manolo_Fortich' => [8.37185597, 124.8565021],
+                'Manolo Fortich' => [8.37185597, 124.8565021],
                 'Maramag' => [7.780496768, 125.0116252],
                 'Pangantucan' => [7.829324859, 124.8289291],
                 'Quezon' => [7.714606524, 125.1722154],
-                'San_Fernando' => [7.917050152, 125.3287636],
+                'San Fernando' => [7.917050152, 125.3287636],
                 'Sumilao' => [8.326088809, 124.977639],
                 'Talakag' => [8.232552207, 124.6037043],
                 'Valencia' => [7.903034752, 125.0894051]
             ],
-            'Lanao_Del_Norte' => [
+            'Lanao Del Norte' => [
                 'Bacolod' => [8.189167422, 124.0242467],
                 'Baloi' => [8.109256055, 124.2294037],
                 'Baroy' => [8.02626285, 123.7785441],
@@ -103,47 +105,46 @@ class DatabaseSeeder extends Seeder
                 'Matungao' => [8.134429887, 124.1676327],
                 'Munai' => [8.07862116, 124.0528027],
                 'Nunungan' => [7.788378402, 123.9089295],
-                'Pantao_Ragat' => [8.078323657, 124.132846],
+                'Pantao Ragat' => [8.078323657, 124.132846],
                 'Pantar' => [8.058261944, 124.2649987],
-                'Poona_Piagapo' => [8.136356384, 124.1200824],
+                'Poona Piagapo' => [8.136356384, 124.1200824],
                 'Salvador' => [7.906326739, 123.841626],
                 'Sapad' => [7.870909223, 123.8129313],
-                'Sultan_Naga_Dimaporo' => [7.793241445, 123.764687],
+                'Sultan Naga Dimaporo' => [7.793241445, 123.764687],
                 'Tagoloan' => [8.175498791, 124.2698243],
                 'Tangcal' => [7.996913509, 123.9968754],
                 'Tubod' => [8.044721354, 123.7897]
             ],
-            'Misamis_Occidental' => [
+            'Misamis Occidental' => [
                 'Aloran' => [8.416144119654293, 123.82097266785125],
                 'Baliangao' => [8.66029439147963, 123.60293303716983],
                 'Bonifacio' => [8.052701339925473, 123.61382578134362],
                 'Calamba' => [8.56078950963135, 123.64400780576152],
                 'Clarin' => [8.200152623838322, 123.86211469668577],
                 'Concepcion' => [8.421332481543317, 123.60475078326022],
-                'Don_Victoriano_Chiongbian' => [8.247318151716952, 123.56861744086278],
+                'Don Victoriano Chiongbian' => [8.247318151716952, 123.56861744086278],
                 'Jimenez' => [8.33538217308207, 123.84018126785095],
                 'Lopez_Jaena' => [8.526282591550816, 123.75060798134567],
                 'Oroquieta' => [8.48567386723216, 123.80813953901638],
                 'Ozamiz' => [8.151137500890195, 123.85020198319152],
                 'Panaon' => [8.36550576113419, 123.83822045066216],
                 'Plaridel' => [8.621735367444177, 123.70984192367548],
-                'Sapang_Dalaga' => [8.542611009682343, 123.56757826785186],
+                'Sapang Dalaga' => [8.542611009682343, 123.56757826785186],
                 'Sinacaban' => [8.285601433349727, 123.84261783901543],
                 'Tangub' => [8.061306241959048, 123.75147742552053],
                 'Tudela' => [8.241466148188001, 123.84749825435657]
             ],
-            'Misamis_Oriental' => [
+            'Misamis Oriental' => [
                 'Alubijid' => [8.570881411117911, 124.47318091387639],
                 'Balingasag' => [8.742594269003574, 124.77435680648715],
                 'Balingoan' => [9.004110322753089, 124.85040532552486],
                 'Binuangan' => [8.922148738663214, 124.7857456745521],
                 'Claveria' => [8.620957599589877, 124.90629989853512],
-                'El_Salvador' => [8.558668543645254, 124.52686485251054],
+                'El Salvador' => [8.558668543645254, 124.52686485251054],
                 'Gingoog' => [8.816461426804523, 125.10360363901789],
                 'Gitagum' => [8.594193369613, 124.40598004271205],
                 'Initao' => [8.498565229939835, 124.30410428134576],
                 'Jasaan' => [8.651641566774916, 124.7557631813462],
-                'Kinoguitan' => [8.983157052180387, 124.79184845251251],
                 'Lagonglong' => [8.806254519671132, 124.78789221018236],
                 'Laguindingan' => [8.573754167405554, 124.44236528319347],
                 'Libertad' => [8.563240652465401, 124.35208418319361],
@@ -171,27 +172,34 @@ class DatabaseSeeder extends Seeder
         $provinceRole = Role::where('role_type', Role::PROVINCE)->first();
         $muniRole = Role::where('role_type', Role::MUNICIPALITY)->first();
         Office::create([
-            'name' => 'RDRRMC',
+            'firstname' => 'RDRRMC',
+            'lastname' => 'RDRRMC',
+            'middlename' => 'RDRRMC',
             'email' => 'RDRRMC' . "@gov.ph",
             'password' => bcrypt('RDRRMC'),
-            'must_reset_password'=>true,
+            'must_reset_password' => false,
             'assign' => $assignRdrrmc->id,
             'role_id' => $admin->id,
         ]);
 
-       
+
         foreach ($provinces as $province => $municipalities) {
             $provAssign = AssignOffice::create([
                 'province' => $province,
             ]);
-            Office::create([
-                'name' => $province,
-                'email' => $province . "@gov.ph",
-                'password' => bcrypt($province),
-                'must_reset_password'=>true,
-                'assign' => $provAssign->id,
-                'role_id' => $provinceRole->id,
-            ]);
+            // Office::create([
+            //     'firstname' => $this->faker->firstName(),
+            //     'lastname' => $this->faker->lastName(),
+            //     'middlename' => $this->faker->lastName(),
+            //     'suffix' => $this->faker->suffix(),
+            //     'address' => $this->faker->address(),
+            //     'contact' => $this->faker->phoneNumber(),
+            //     'email' => $province . "@gov.ph",
+            //     'password' => bcrypt($province),
+            //     'must_reset_password' => false,
+            //     'assign' => $provAssign->id,
+            //     'role_id' => $provinceRole->id,
+            // ]);
             foreach ($municipalities as $municipality => $coordinate) {
                 $count = 1;
                 $assign =  AssignOffice::create([
@@ -200,53 +208,50 @@ class DatabaseSeeder extends Seeder
                     'latitude' => $coordinate[0],
                     'longitude' => $coordinate[1]
                 ]);
-                $email = Office::where('email', $municipality . '@gov.ph')->first();
-                if ($email) {
-                    Office::create([
-                        'name' => $municipality,
-                        'email' => $municipality . "" . $count . "@gov.ph",
-                        'password' => bcrypt($municipality),
-                        'assign' => $assign->id,
-                        'must_reset_password'=>true,
-                        'role_id' => $muniRole->id,
-                    ]);
-                    $count++;
-                } else {
-                    Office::create([
-                        'name' => $municipality,
-                        'email' => $municipality . "@gov.ph",
-                        'password' => bcrypt($municipality),
-                        'assign' => $assign->id,
-                        'must_reset_password'=>true,
-                        'role_id' => $muniRole->id,
-                    ]);
-                }
+                // $email = Office::where('email', $municipality . '@gov.ph')->first();
+                // if ($email) {
+                //     Office::create([
+                //         'firstname' => $this->faker->firstName(),
+                //         'lastname' => $this->faker->lastName(),
+                //         'middlename' => $this->faker->lastName(),
+                //         'suffix' => $this->faker->suffix(),
+                //         'address' => $this->faker->address(),
+                //         'contact' => $this->faker->phoneNumber(),
+                //         'must_reset_password' => false,
+                //         'email' => $municipality . "" . $count . "@gov.ph",
+                //         'password' => bcrypt($municipality),
+                //         'assign' => $assign->id,
+                //         'role_id' => $muniRole->id,
+                //     ]);
+                //     $count++;
+                // } else {
+                //     Office::create([
+                //         'firstname' => $this->faker->firstName(),
+                //         'lastname' => $this->faker->lastName(),
+                //         'middlename' => $this->faker->lastName(),
+                //         'suffix' => $this->faker->suffix(),
+                //         'address' => $this->faker->address(),
+                //         'contact' => $this->faker->phoneNumber(),
+                //         'must_reset_password' => false,
+                //         'email' => $municipality . "@gov.ph",
+                //         'password' => bcrypt($municipality),
+                //         'assign' => $assign->id,
+                //         'role_id' => $muniRole->id,
+                //     ]);
+                // }
             }
         }
-        // $this->call(equipmentSeeder::class);
-       
-        // $equipment = Equipment::all();
 
+        // $this->call(
+        //     [
+        //         EquipmentAttributeSeeder::class,
+        //         equipmentSeeder::class,
 
-        // $office = Office::where('role_id', 1)->get();
-        // $attrs = EquipmentAttribute::count();
-        // $amount = 0;
-        // while ($attrs > $amount) {
-        //     EquipmentOwned::create([
-        //         'equipment_id' => $equipment->random()->id,
-        //         'office_id' => $office->random()->id
-        //     ]);
-        //     $amount++;
-        // }
+        //     ]
+        // );
 
-        // $owned = EquipmentOwned::all();
-        // $owned->each(function ($ow) {
-        //     EquipmentDetail::create([
-        //         'equipment_owner' => $ow->id,
-        //         'serviceable' => rand(1, 500),
-        //         'unusable' => rand(1, 500),
-        //         'poor' => rand(1, 500),
-        //     ]);
-        // });
+        // $this->call(
+        //     ApprovalSeeder::class
+        // );
     }
 }

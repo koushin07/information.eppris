@@ -1,6 +1,6 @@
 <template>
     <div class="bg-white h-full md:h-screen">
-        <nav class="flex flex-row justify-between bg-orange-200 p-5 w-full">
+        <nav class="flex flex-row justify-between shadow-md p-5 w-full">
             <inertia-link href="/rdrrmc/dashboard">
                 <img src="../../css/eprris.png" class="h-12">
 
@@ -25,9 +25,9 @@
                     <template #content>
                         <ul class="py-1 text-sm text-gray-700 dark:text-gray-200">
                             <li>
-                                <inertia-link :href="route('municipality.office.index')"
+                                <!-- <inertia-link :href="route('municipality.office.index')"
                                     class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer">
-                                    Account</inertia-link>
+                                    Account</inertia-link> -->
 
                                 <inertia-link :href="route('logout')" method="post"
                                     class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer">
@@ -53,6 +53,8 @@
 
 <script>
 import Dropdown from '@/Components/Dropdown.vue';
+import { usePage } from '@inertiajs/inertia-vue3';
+import { useToast } from "vue-toastification";
 export default {
     components: {
         Dropdown,
@@ -60,8 +62,22 @@ export default {
     },
    
     setup() {
-       
+        const toast = useToast();
 
+        
+        window.Echo.private(
+            `register.${usePage().props.value.auth.user.id}`
+        ).listen(".new.register", (e) => {
+           console.log(e);
+            toast.info("New Register User", {
+                timeout: 5000,
+                icon: "fa-regular fa-envelope",
+            });
+
+        });
+      
+
+       
         return {}
     }
 }
