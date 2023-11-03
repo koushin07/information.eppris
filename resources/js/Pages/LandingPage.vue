@@ -333,7 +333,7 @@ export default {
 <style scoped>
 .full-page {
     background-image: linear-gradient(rgba(0, 0, 0, 0.7),
-            rgba(0, 0, 0, 0.1)), url('landingpage/loginbackground.png');
+            rgba(0, 0, 0, 0.1)), url('../../assets/landingpage/loginbackground.png');
     height: 100vh;
     background-size: cover;
     background-position: center;
