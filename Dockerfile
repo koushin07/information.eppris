@@ -12,20 +12,19 @@ RUN apt-get update && \
 
 # Update package lists and install required software
 RUN apt-get update && \
-    apt-get install -y nodejs npm && \
-    npm install -g yarn
+    apt-get install -y nodejs npm
 
 # Install your PHP dependencies
 ENV SKIP_COMPOSER 1
 RUN composer install --no-dev --working-dir=/var/www/html
 
-# Install your Node.js dependencies (e.g., Vite)
+# Install your Node.js dependencies (e.g., Vite) using npm
 WORKDIR /var/www/html
-COPY package.json yarn.lock ./
-RUN yarn install
+COPY package.json package-lock.json ./
+RUN npm install
 
 # Build your front-end assets using Vite
-RUN yarn dev
+RUN npm run dev
 
 # Set the environment variables for your Laravel application
 ENV APP_ENV production
