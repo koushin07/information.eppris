@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
+
+echo "hello";
 /*
 |--------------------------------------------------------------------------
 | Check If The Application Is Under Maintenance

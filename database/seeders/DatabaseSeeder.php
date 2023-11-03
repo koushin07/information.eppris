@@ -171,16 +171,18 @@ class DatabaseSeeder extends Seeder
 
         $provinceRole = Role::where('role_type', Role::PROVINCE)->first();
         $muniRole = Role::where('role_type', Role::MUNICIPALITY)->first();
-        Office::create([
-            'firstname' => 'RDRRMC',
-            'lastname' => 'RDRRMC',
-            'middlename' => 'RDRRMC',
-            'email' => 'RDRRMC' . "@gov.ph",
-            'password' => bcrypt('RDRRMC'),
-            'must_reset_password' => false,
-            'assign' => $assignRdrrmc->id,
-            'role_id' => $admin->id,
-        ]);
+        if( !Office::where('firstname', 'RDRRMC')->exists()){
+            Office::create([
+                'firstname' => 'RDRRMC',
+                'lastname' => 'RDRRMC',
+                'middlename' => 'RDRRMC',
+                'email' => 'RDRRMC' . "@gov.ph",
+                'password' => bcrypt('RDRRMC'),
+                'must_reset_password' => false,
+                'assign' => $assignRdrrmc->id,
+                'role_id' => $admin->id,
+            ]);
+        }
 
 
         foreach ($provinces as $province => $municipalities) {
