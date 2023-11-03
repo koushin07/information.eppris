@@ -21,3 +21,6 @@ yarn dev
 # Running migrations...
 echo "Running migrations..."
 php artisan migrate --force
+
+echo "Running seeds..."
+php artisan db:seed
