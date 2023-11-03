@@ -4,15 +4,13 @@ FROM richarvey/nginx-php-fpm:latest
 # Copy your Laravel application code into the image
 COPY . .
 
-# Install the GD extension for PHP
-RUN apt-get update && \
-    apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev && \
+# Install the GD extension for PHP on Alpine Linux
+RUN apk --no-cache add freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev && \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-install -j$(nproc) gd
 
 # Update package lists and install required software
-RUN apt-get update && \
-    apt-get install -y nodejs npm
+RUN apk --no-cache add nodejs npm
 
 # Install your PHP dependencies
 ENV SKIP_COMPOSER 1
