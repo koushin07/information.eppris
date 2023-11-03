@@ -17,10 +17,7 @@ php artisan config:cache
 echo "Caching routes..."
 php artisan route:cache
 
-# Building front-end assets using Vite
-echo "Building front-end assets..."
-yarn install
-yarn dev
+
 
 # Running migrations...
 echo "Running migrations..."
