@@ -22,7 +22,7 @@ COPY package.json package-lock.json ./
 RUN npm install
 
 # Build your front-end assets using Vite
-RUN npm run dev
+RUN npm run build
 
 # Set the environment variables for your Laravel application
 ENV APP_ENV production
