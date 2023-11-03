@@ -1,19 +1,23 @@
-echo "Running composer"
-composer install --no-dev --working-dir=/var/www/html --ignore-platform-req=ext-gd
-echo "this is the version of your composer"
-composer --version
+#!/bin/bash
 
-echo "Running npm build..."
-npm run build --prefix /var/www/html
+# Running Composer to install PHP dependencies
+echo "Running Composer"
+composer global require hirak/prestissimo
+composer install --no-dev --working-dir=/var/www/html
 
+# Caching config...
 echo "Caching config..."
 php artisan config:cache
 
+# Caching routes...
 echo "Caching routes..."
 php artisan route:cache
 
+# Building front-end assets using Vite
+echo "Building front-end assets..."
+yarn install
+yarn dev
+
+# Running migrations...
 echo "Running migrations..."
 php artisan migrate --force
-
-echo "Seeding..."
-php artisan db:seed --force
