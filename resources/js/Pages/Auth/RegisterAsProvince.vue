@@ -106,7 +106,7 @@ let form = useForm({
 const convertedProvince = props.provinces ? Object.values(props.provinces).map((c) => [c.province, c.id]) : []
 const submit = () => {
     console.log('sbumit as prov')
-    form.post(route('register'), {
+    form.post(route('register_province'), {
 
         onSuccess: () => form.reset('password', 'password_confirmation'),
 
