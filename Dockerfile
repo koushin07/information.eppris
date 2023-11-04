@@ -33,4 +33,4 @@ ENV LOG_CHANNEL stderr
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
 # Start your application using the entry point script
-CMD ["/00-laravel-deploy.sh"]
+CMD ["/start.sh"]
