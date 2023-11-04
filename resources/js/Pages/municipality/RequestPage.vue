@@ -1,8 +1,6 @@
 <template>
 
-    <!-- <ContentBox>
-        <Local-transactions :equipments="equipments" :provinces="provinces" />
-    </ContentBox> -->
+
     <Head title="My Request"/>
 
     <content-box>
@@ -178,7 +176,7 @@
                             </div>
 
 
-                            <!-- <DetailModal :incident="body.incident" :detail="body.id" :equipments="equipments" name="New" :provinces="provinces" /> -->
+                           
                         </td>
 
 
@@ -276,19 +274,6 @@ export default {
         const getIncident = (incident) => {
             incidents.value = incident
         }
-        // const getHistories = () => {
-        //     if (histories) {
-        //         //  for(const history in histories){
-        //         //     console.log(history);
-        //         //  }
-        //         Object.keys(histories).forEach((history, key) => {
-        //             incidents.value.push({
-        //                 incident: history
-        //             })
-        //         })
-        //         console.log(incidents.value);
-        //     }
-        // }
 
         const getStatuses = (incident, status) => {
             console.log(incident);
@@ -297,29 +282,17 @@ export default {
 
         }
 
-        // watch(date, value => {
-        //     Inertia.get(usePage().url.value, { date: value }, {
-        //         preserveState: true
-        //     })
-        // })
-        // watch(filter, value => {
-        //     Inertia.get(usePage().url.value, { filter: value }, {
-        //         preserveState: true
-        //     })
-        // })
-
 
         const handleSubmit = async (form) => {
             form.incidents = incident
             console.log(form.incidents);
             form.post('/api/request', {
-                // preserveState: true,
+
                 preserveScroll: true,
                 onFinish: () => {
                     incidents.value = ''
                     incident.value = ''
-                    // Inertia.reload() 
-                    // getHistories()
+
                 },
 
             })
@@ -340,7 +313,7 @@ export default {
                 })
             }
             if (filter.value === 'name') {
-                // console.log(searchInput.value);
+
                 if (usePage().url.value.includes('id')) {
                     Inertia.get('/municipality/request', { name: searchInput.value, date: date.value  }, {
                         preserveState: true
@@ -353,7 +326,7 @@ export default {
                
             }
             if (filter.value === 'ID' && date) {
-                // console.log(searchInput.value);
+                
                 if (usePage().url.value.includes('name')) {
                     Inertia.get('/municipality/request', { id: searchInput.value, date: date.value }, {
                         preserveState: true

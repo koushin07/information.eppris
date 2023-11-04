@@ -80,14 +80,7 @@
                     <td class="text-center">
                         {{ body.authorize_quantity }}
                     </td>
-                    <!-- <td class="text-center">
-                                {{ body.incident }}
-                            </td> -->
-                  
                     
-                    <!-- <td class="text-center">
-            {{ moment(body.created_at).format('ddd, hA') }}
-        </td> -->
                     <td class="text-center">
                        
                         <div class="flex flex-row justify-center">

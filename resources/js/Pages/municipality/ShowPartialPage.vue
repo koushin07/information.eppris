@@ -67,13 +67,6 @@
                             </Quantity-modal>
                             <PersonalModal :equipment_borrow="body.id" name="Decline" @submit="deny(id, reason)" />
                         </div>
-
-
-
-                        <!-- <button @click="deny(body.eb_id)"
-                                    class="text-sm  hover:bg-red-600 mx-2 text-center bg-red-500 px-2 rounded text-white tracking-wide">
-                                    Decline
-                                </button> -->
                     </td>
                     <td class="text-center" v-else>
                         <div class="flex flex-row justify-center space-x-3">

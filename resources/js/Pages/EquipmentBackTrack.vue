@@ -1,45 +1,6 @@
 <template class="smooth">
 
     <Head :title="equipments.name" />
-    <!-- <ContentBox class="bg-white">
-        <div class="flex flex-row space-x-2 w-full ">
-            <div
-                class="p-4 box-content flex flex-col shadow bg-custom w-3/2 h-full rounded-2xl m-5 transition ease-in-out delay-50 bg-blue-500 hover:-translate-y-1 hover:scale-110  duration-200 cursor-pointer">
-                <div class="text-center -translate-y-8  ">
-                    <span
-                        class=" text-3xl font-bold tracking-widest  w-fit text-center font-tohama  text-orange-400 bg-text">
-                        {{ equipments.name }}
-                    </span>
-                </div>
-                <div class="flex flex-col sm:flex-row ">
-                    <span class="text-xl font-bold  sm:border-r-2 t border-black py-2 pr-2">TRANSACTION
-
-                    </span>
-                    <div class="flex flex-col pl-2 justify-between">
-                        {{ tracks.mean ? 'tracks' : '' }}
-                        <span class="text-lg font-semibold">Borrowed: {{ tracks.mean ? tracks.mean[0]?.total_of_borrow :
-                                0
-                        }}</span>
-                        <span class="text-lg font-semibold">Returned: {{ tracks.mean ? tracks.mean[1]?.total_of_return :
-                                0
-                        }}</span>
-                    </div>
-
-                </div>
-
-
-              
-
-
-            </div>
-
-
-
-
-
-        </div>
-
-    </ContentBox> -->
     <div class="flex flex-col justify-end h-fit p-5">
         <span class="text-xl font-bold  ">
             {{ equipments.name }}
@@ -57,9 +18,7 @@
                     v-model="equipmentStatus" />
 
 
-                <!-- <input type="date" class="rounded" v-model="date"> -->
-                <!-- <Datepicker v-model="date" :enable-time-picker="false" no-hours-overlay :is-24="false" /> -->
-            </div>
+                     </div>
             <div class="relative ">
                 <table class="table-auto  w-full text-sm border-x border-orange-200 text-gray-500 dark:text-gray-400">
                     <thead
@@ -97,9 +56,7 @@
                                 {{ body.asset_id }}
 
                             </td>
-                            <!-- <td class="text-center">
-                    {{ moment(body.recieved_at).format('MMMM DD Y') }}
-                </td> -->
+                     
                             <td class="text-center">
                                 <button @click="collapsible = collapsible === body ? '' : body" type="button"
                                     class="font-medium dark:text-orange-500 hover:underline">
@@ -160,9 +117,7 @@
                                 
 
                             </td>
-                            <!-- <td class="text-center">
-                    {{ moment(body.recieved_at).format('MMMM DD Y') }}
-                </td> -->
+                           
                             <td class="text-center" v-if="$page.props.auth.user.assign_office.municipality">
 
                                 <div href="javascript:void(0)" type="button"

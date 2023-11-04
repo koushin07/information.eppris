@@ -1,92 +1,6 @@
 <template>
     <Content-box>
-        <!-- <h1 class="text-semibold text-center tex-lg pb-10">Unfinish Transaction</h1>
-        <div class="grid grid-cols-5 gap-5 place-content-center">
-            <div class=" flex flex-col z-0  justify-between col-span-2">
-                <div class="flex flex-col  overflow-hidden h-[450px] ">
-
-                    <div class="flex flex-col justify-between overflow-y-auto border-2 rounded-lg  space-y-2 scrollbar">
-                 
-                        <button v-for="(unfin, key) in unfinish.data" :key="key" 
-                        
-                            class="flex justify-between  border-b  p-4 hover:bg-slate-200 border-grey-200 last:border-transparent">
-
-                            <div class="grid grid-cols-1 text-start">
-                                <span class="font-bold text-base text-gray-700 uppercase">{{ unfin
-                                }}</span>
-                                <span class="text-xs text-gray-700 uppercase"></span>
-                            </div>
-
-
-
-                        </button>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class=" flex flex-col z-0 h-full  justify-between col-span-3">
-                <div class="flex flex-col  overflow-hidden h-full ">
-
-                    <form v-if="toggleForm" @submit.prevent="handleSubmit"
-                        class=" flex flex-col animate-fade-in-down justify-between overflow-y-auto border-2 rounded-lg  space-y-2 scrollbar p-5 ">
-                        <div class="flex flex-row justify-between">
-                            <h1 class="font-bold text-2xl font-sans antialiased capitalize">
-                                {{ equipmentAttr.equipment_name }}</h1>
-
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-10  h-full w-full">
-
-
-                            <div class="grid grid-rows-3 gap-10">
-                                <div class="flex flex-col">
-                                    <label class="text-sm font-bold">Serial Number</label>
-                                    <input type="number" v-model="equipmentAttr.serial_number"
-                                        class="border-b-2 border-0  px-2 py-1  focus:ring-0  focus:border-b-blue-600">
-                                </div>
-                                <div class="flex flex-col">
-                                    <label class="text-sm font-bold">Code</label>
-                                    <input type="text" v-model="equipmentAttr.code"
-                                        class="border-b-2 border-0  px-2 py-1  focus:ring-0  focus:border-b-blue-600">
-                                </div>
-                                <div class="flex flex-col">
-                                    <label class="text-sm font-bold">Asset ID</label>
-                                    <input type="number" v-model="equipmentAttr.asset_id"
-                                        class="border-b-2 border-0  px-2 py-1  focus:ring-0  focus:border-b-blue-600">
-                                </div>
-                            </div>
-
-                            <div class="grid grid-rows-3 gap-10">
-                                <div class="flex flex-col">
-                                    <label class="text-sm font-bold">Unit</label>
-                                    <input type="number" v-model="equipmentAttr.unit"
-                                        class="border-b-2 border-0  px-2 py-1  focus:ring-0  focus:border-b-blue-600">
-                                </div>
-                                <div class="flex flex-col">
-                                    <label class="text-sm font-bold">Model Number</label>
-                                    <input type="number" v-model="equipmentAttr.model_number"
-                                        class="border-b-2 border-0  px-2 py-1  focus:ring-0  focus:border-b-blue-600">
-                                </div>
-                                <div class="flex flex-col">
-                                    <label class="text-sm font-bold">Quantity</label>
-                                    <input type="number" v-model="equipmentAttr.quantity"
-                                        class="border-b-2 border-0  px-2 py-1  focus:ring-0  focus:border-b-blue-600">
-                                </div>
-                            </div>
-                            <div class="flex justify-end col-span-2 ">
-                                <button type="submit"
-                                    class="bg-orange-500 px-11 py-2 rounded-xl  hover:bg-orange-700 ">save</button>
-
-                            </div>
-
-
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div> -->
-        <div class="flex flex-col space-y-10">
+      <div class="flex flex-col space-y-10">
             <div class="grid grid-cols-2 w-2/3 gap-2">
                 <v-select :options="convertedIncident" v-model="filter" class="w-full h-8 rounded cursor-pointer"
                     placeholder="Incident" />
@@ -126,14 +40,12 @@
                             {{ body.pendings }}
                         </td>
                         <td class="text-center">
-                            <!-- <UnifinishModal :id="body.id" :name="body.name" /> -->
                             <div class="flex justify-center">
                                 <person-info-modal :body="body"/>
                                 
                             </div>
                         </td>
                         <td class="text-center">
-                            <!-- <UnifinishModal :id="body.id" :name="body.name" /> -->
                             <div class="flex justify-center">
                                     <inertia-link class="text-blue-400 underline"
                                     :href="('/municipality/partials/' + body.id)"
@@ -146,10 +58,7 @@
                                 </inertia-link>
                             </div>
                         </td>
-                        <!-- <td class="text-center">
-                        {{ moment(body.created_at).format('MMMM DD Y') }}
-                    </td> -->
-
+                       
                     </tr>
 
                 </tbody>
@@ -176,7 +85,11 @@ import PersonInfoModal from '@/Components/PersonInfoModal.vue';
 export default {
     layout: MunicipalityLayout,
     components: {
-        ContentBox, Head, BorrowHistory, UnifinishModal, PersonInfoModal
+        ContentBox, 
+        Head, 
+        BorrowHistory, 
+        UnifinishModal, 
+        PersonInfoModal
     },
     props: {
         provinces: Object,
