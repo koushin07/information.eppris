@@ -37,7 +37,12 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 
 # Make the script executable
 RUN chmod +x ./scripts/00-laravel-deploy.sh
+RUN php artisan config:clear
+RUN php artisan route:cache
+RUN php artisan config:cache
 
+RUN php artisan migrate --force
+RUN php artisan db:seed --force
 
 # Start your application using the entry point script
-CMD ["./scripts/00-laravel-deploy.sh"]
+# CMD ["./scripts/00-laravel-deploy.sh"]
