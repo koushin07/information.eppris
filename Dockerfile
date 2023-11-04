@@ -38,4 +38,4 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 
 
 # Start your application using the entry point script
-CMD ["./scripts/00-laravel-deploy.sh.sh"]
+CMD ["./scripts/00-laravel-deploy.sh"]
