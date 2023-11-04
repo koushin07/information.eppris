@@ -21,3 +21,4 @@ echo "Running seeds..."
 php artisan db:seed --force
 
 echo "done deploying"
+exit 0
