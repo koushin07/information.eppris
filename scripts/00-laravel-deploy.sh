@@ -1,16 +1,5 @@
 #!/bin/bash
 
-# Running Composer to install PHP dependencies
-echo "Running Composer"
-
-composer install --no-dev --working-dir=/var/www/html
-
-echo "Running NPM dependencies"
-npm install
-
-echo "Building dependencies"
-npm run build
-
 # Clearing config
 php artisan config:clear
 

@@ -16,25 +16,15 @@ RUN apk --no-cache add nodejs npm
 
 # Install your PHP dependencies
 ENV SKIP_COMPOSER 1
-# RUN composer install --no-dev --working-dir=/var/www/html
-# Image config
-ENV SKIP_COMPOSER 1
-ENV WEBROOT /var/www/html/public
-ENV PHP_ERRORS_STDERR 1
-ENV RUN_SCRIPTS 1
-ENV REAL_IP_HEADER 1
-# Laravel config
-ENV APP_ENV production
-ENV APP_DEBUG false
-ENV LOG_CHANNEL stderr
+RUN composer install --no-dev --working-dir=/var/www/html
 
 # Install your Node.js dependencies (e.g., Vite) using npm
-# WORKDIR /var/www/html
-# COPY package.json package-lock.json ./
-# RUN npm install
+WORKDIR /var/www/html
+COPY package.json package-lock.json ./
+RUN npm install
 
 # Build your front-end assets using Vite
-# RUN npm run build
+RUN npm run build
 
 
 # Set the environment variables for your Laravel application
