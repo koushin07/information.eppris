@@ -4,12 +4,7 @@ FROM richarvey/nginx-php-fpm:latest
 # Copy your Laravel application code into the image
 COPY . .
 
-# Image config
-ENV SKIP_COMPOSER 1
-ENV WEBROOT /var/www/html/public
-ENV PHP_ERRORS_STDERR 1
-ENV RUN_SCRIPTS 1
-ENV REAL_IP_HEADER 1
+
 
 # Install the GD extension for PHP on Alpine Linux
 RUN apk --no-cache add freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev && \
@@ -20,8 +15,15 @@ RUN apk --no-cache add freetype libpng libjpeg-turbo freetype-dev libpng-dev lib
 RUN apk --no-cache add nodejs npm
 
 # Install your PHP dependencies
-# ENV SKIP_COMPOSER 1
-# RUN composer install --no-dev --working-dir=/var/www/html
+ENV SKIP_COMPOSER 1
+RUN composer install --no-dev --working-dir=/var/www/html
+RUN composer global require hirak/prestissimo
+
+RUN php artisan config:clear
+RUN php artisan config:cache
+RUN php artisan route:cache
+RUN artisan migrate --force
+RUN php artisan db:seed
 
 # Install your Node.js dependencies (e.g., Vite) using npm
 WORKDIR /var/www/html
@@ -30,6 +32,7 @@ RUN npm install
 
 # Build your front-end assets using Vite
 RUN npm run build
+
 
 # Set the environment variables for your Laravel application
 ENV APP_ENV production
