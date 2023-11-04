@@ -22,7 +22,7 @@ RUN composer global require hirak/prestissimo
 RUN php artisan config:clear
 RUN php artisan config:cache
 RUN php artisan route:cache
-RUN artisan migrate --force
+RUN php artisan migrate --force
 RUN php artisan db:seed
 
 # Install your Node.js dependencies (e.g., Vite) using npm
