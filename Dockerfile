@@ -35,6 +35,8 @@ ENV LOG_CHANNEL stderr
 # Allow composer to run as root
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
+# Make the script executable
+RUN chmod +x /script/00-laravel-deploy.sh
 
 
 # Start your application using the entry point script
