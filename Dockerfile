@@ -17,11 +17,6 @@ RUN apk --no-cache add nodejs npm
 # Install your PHP dependencies
 ENV SKIP_COMPOSER 1
 RUN composer install --no-dev --working-dir=/var/www/html
-RUN php artisan config:clear
-RUN php artisan config:cache
-RUN php artisan route:cache
-RUN php artisan migrate --force
-RUN php artisan db:seed
 
 # Install your Node.js dependencies (e.g., Vite) using npm
 WORKDIR /var/www/html
