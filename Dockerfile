@@ -8,6 +8,8 @@ COPY . .
 COPY script/00-laravel-deploy.sh /00-laravel-deploy.sh
 
 
+
+
 # Install the GD extension for PHP on Alpine Linux
 RUN apk --no-cache add freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev && \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
