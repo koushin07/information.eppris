@@ -30,6 +30,6 @@ ENV LOG_CHANNEL stderr
 
 # Make the script executable and set it as the entry point
 ENV COMPOSER_ALLOW_SUPERUSER 1
-
+RUN chmod +x ./00-laravel-deploy.sh
 CMD ["./00-laravel-deploy.sh"]   
 
