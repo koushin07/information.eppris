@@ -24,11 +24,6 @@ php artisan migrate --force
 echo "Running seeds..."
 php artisan db:seed --force
 
-echo "installing NPM"
-npm install
-
-echo "building frontend"
-npm run build
 
 echo "done deploying"
 
