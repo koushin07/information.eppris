@@ -32,5 +32,5 @@ ENV LOG_CHANNEL stderr
 ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN chmod +x /00-laravel-deploy.sh
 
-CMD ["/start.sh"]   
+CMD ["./script/00-laravel-deploy.sh"]   
 
