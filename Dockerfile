@@ -5,7 +5,7 @@ FROM richarvey/nginx-php-fpm:latest
 COPY . .
 
 # Copy the deployment script into the image
-COPY script/00-laravel-deploy.sh /00-laravel-deploy.sh
+COPY ./script/00-laravel-deploy.sh /00-laravel-deploy.sh
 
 
 
