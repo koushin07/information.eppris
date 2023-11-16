@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo "installing composer"
+composer global require hirak/prestissimo
+composer install --no-dev --working-dir=/var/www/html
+
 # Clearing config
 php artisan config:clear
 
@@ -21,4 +25,3 @@ echo "Running seeds..."
 php artisan db:seed --force
 
 echo "done deploying"
-exit 0
