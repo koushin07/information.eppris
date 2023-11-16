@@ -36,8 +36,7 @@ ENV LOG_CHANNEL stderr
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
 # Make the script executable
-RUN chmod +x ./scripts/00-laravel-deploy.sh
-RUN php artisan config:clear
+
 RUN php artisan route:cache
 RUN php artisan config:cache
 
