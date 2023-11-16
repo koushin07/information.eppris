@@ -4,8 +4,6 @@ FROM richarvey/nginx-php-fpm:latest
 # Copy your Laravel application code into the image
 COPY . .
 
-
-
 # Install the GD extension for PHP on Alpine Linux
 RUN apk --no-cache add freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev && \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
@@ -26,21 +24,12 @@ RUN npm install
 # Build your front-end assets using Vite
 RUN npm run build
 
-
 # Set the environment variables for your Laravel application
 ENV APP_ENV production
 ENV APP_DEBUG false
 ENV LOG_CHANNEL stderr
 
-# Allow composer to run as root
-ENV COMPOSER_ALLOW_SUPERUSER 1
-
-# Make the script executable
-
-RUN php artisan route:cache
-RUN php artisan config:cache
-
-
-
-# Start your application using the entry point script
-# CMD ["./scripts/00-laravel-deploy.sh"]
+# Make the script executable and set it as the entry point
+COPY ./scripts/00-laravel-deploy.sh /script/
+RUN chmod +x /script/00-laravel-deploy.sh
+ENTRYPOINT ["/script/00-laravel-deploy.sh"]
