@@ -32,4 +32,4 @@ ENV LOG_CHANNEL stderr
 # Make the script executable and set it as the entry point
 COPY ./scripts/00-laravel-deploy.sh /script/
 RUN chmod +x /script/00-laravel-deploy.sh
-ENTRYPOINT ["/script/00-laravel-deploy.sh"]
+CMD ["/script/00-laravel-deploy.sh"]
