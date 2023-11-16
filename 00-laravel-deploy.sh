@@ -31,3 +31,5 @@ echo "building frontend"
 npm run build
 
 echo "done deploying"
+
+exit 0

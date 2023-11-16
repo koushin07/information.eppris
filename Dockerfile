@@ -4,18 +4,6 @@ FROM richarvey/nginx-php-fpm:latest
 # Copy your Laravel application code into the image
 COPY . .
 
-# Copy the deployment script into the image
-
-# Install the GD extension for PHP on Alpine Linux
-RUN apk --no-cache add freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev && \
-    docker-php-ext-configure gd --with-freetype --with-jpeg && \
-    docker-php-ext-install -j$(nproc) gd
-
-# Update package lists and install required software
-RUN apk --no-cache add nodejs npm
-
-
-
 # Image config
 ENV SKIP_COMPOSER 1
 ENV WEBROOT /var/www/html/public
