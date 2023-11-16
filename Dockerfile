@@ -5,10 +5,6 @@ FROM richarvey/nginx-php-fpm:latest
 COPY . .
 
 # Copy the deployment script into the image
-COPY ./script/00-laravel-deploy.sh /00-laravel-deploy.sh
-
-
-
 
 # Install the GD extension for PHP on Alpine Linux
 RUN apk --no-cache add freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev && \
@@ -36,5 +32,5 @@ ENV LOG_CHANNEL stderr
 ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN chmod +x /00-laravel-deploy.sh
 
-CMD ["/00-laravel-deploy.sh"]   
+CMD ["/start.sh"]   
 
