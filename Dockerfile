@@ -41,8 +41,7 @@ RUN php artisan config:clear
 RUN php artisan route:cache
 RUN php artisan config:cache
 
-RUN php artisan migrate --force
-RUN php artisan db:seed --force
+
 
 # Start your application using the entry point script
 # CMD ["./scripts/00-laravel-deploy.sh"]
