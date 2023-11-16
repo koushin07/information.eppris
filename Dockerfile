@@ -13,13 +13,6 @@ RUN apk --no-cache add freetype libpng libjpeg-turbo freetype-dev libpng-dev lib
 RUN apk --no-cache add nodejs npm
 
 
-# Install your Node.js dependencies (e.g., Vite) using npm
-WORKDIR /var/www/html
-COPY package.json package-lock.json ./
-RUN npm install
-
-# Build your front-end assets using Vite
-RUN npm run build
 
 # Image config
 ENV SKIP_COMPOSER 1
